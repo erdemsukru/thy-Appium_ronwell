@@ -1,24 +1,37 @@
 package utils;
 
 import io.appium.java_client.AppiumDriver;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import org.testng.Reporter;
+import io.cucumber.java.*;
+
 import java.util.Properties;
 
 public class Hooks {
     AppiumDriver driver;
     Properties properties;
 
-    @Before
-    public void before(){
-        String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
-        properties = ConfigReader.initialize_Properties();
-        driver = DriverFactory.initialized_Driver(browser);
-
+    @BeforeAll
+    public static void beforeAll() {
     }
+
+    @Before
+    public void before() {
+        DriverFactory.setdriver();
+    }
+
+    @BeforeStep
+    public void beforeStep() {
+    }
+
+    @AfterStep
+    public void afterStep() {
+    }
+
     @After
     public void after() {
-        driver.quit();
+        DriverFactory.quitDriver();
+    }
+
+    @AfterAll
+    public static void afterAll() {
     }
 }

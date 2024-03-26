@@ -1,46 +1,40 @@
 package StepDefinitions;
-import java.util.List;
-
-import Pages.AndroidHomePage;
-import Pages.ChromeBrowserPage;
-import Pages.thyPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import utils.DriverFactory;
 
 public class thyTaskSteps {
+
+    ThyPage thy = new thyPage(DriverFactory.getDriver());
     @Given("android cihaz acilir")
     public void androidCihazAcilir() {
         System.out.println("This process will be made by the before hook in util");
     }
 
-    @When("chrome tarayici acilir")
-    public void chromeTarayiciAcilir() {
-        AndroidHomePage.userClicksToChromeIcon();
-
+    @When("thy uygulama acilir")
+    public void thyuygulamasiAcilir() {
+        ThyPage.userClicksToThyIcon();
     }
 
-    @When("thy sitesine girilir")
-    public void thySitesineGirilir() {
-        ChromeBrowserPage.userWritesExactURL();
-    }
-
-    @When("cookieler kabul edilir")
+    @When("konum izni verilir")
+    public void konumizniverilir() {
+        thyPage.userClickstoAllowLocation}
+    @When("bildirimler kabul edilir")
     public void cookielerKabulEdilir() {
-        thyPage.acceptCookies();
-    }
+        thyPage.userClickstoSkipCookies}
+
+    @When("ucus rezervasyonu secilir")
+    public void ucusrezervasyonusecilir() {
+        thyPage.userClickstoBookingAFlight}
+
 
     @When("tek yon secilir")
-    public void tekYonSecilir() {
-        thyPage.clickOneWayButton();
-    }
+    public void tekyonsecilir(){
+    thyPage.userClikstoOneWay}
 
-    @When("Kalkis havalimanı secilir")
-    public void kalkisHavalimanıSecilir() {
-        thyPage.userClicksToSearchFlightButton();
-    }
 
-    @When("inis havalimanı secilir")
-    public void inisHavalimanıSecilir() {
+    @When("inis havalimani secilir")
+    public void inisHavalimaniSecilir() {
         thyPage.selectingArrivalAirport();
     }
 
@@ -64,8 +58,44 @@ public class thyTaskSteps {
         thyPage.selectingCheapestFlight();
     }
 
+    @When("ecofly sinifi secilir")
+    public void ecoflysinifisecilir() {
+        thyPage.selectingEcoFly();
+    }
+
+    @When("ekstra hizmetler secilmeden devam edilir")
+    public void ekstrahizmetsecilmedendevamedilir() {
+        thyPage.selectingNon();
+    }
+
     @When("kisi bilgileri doldurulur")
     public void kisiBilgileriDoldurulur() {
         thyPage.fillPersonalInfos();
     }
-}
+
+
+    @When("yolcunun iletisim bilgileri doldurulur")
+    public void yolcununiletisimbilgileridoldurulur() {
+        thyPage.fillPersonalInfos();
+    }
+
+
+
+    @When("yolcunun iletisim izinleri verilir")
+    public void yolcununiletisimizinleriverilir() {
+        thyPage.fillPersonalPermission();
+    }
+
+    @When("koltuk secimi yapilir")
+    public void koltuksecimiyapilir() {
+        thyPage.selectSeat();
+    }
+
+    @When("ucus ozeti onaylanir")
+    public void confirmFlight() {
+        thyPage.confirmFlight();
+    }
+
+    @When("koltuk secimi gecilir")
+    public void koltukSecimiGecilir() {
+    }
